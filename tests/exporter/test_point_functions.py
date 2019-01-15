@@ -1,4 +1,3 @@
-import tempfile
 import os
 import numpy as np
 from unittest import TestCase
@@ -44,7 +43,7 @@ class TestMaskToPoints(TestCase):
         points = mask_to_points_3d(image)
 
         self.assertEqual(len(points), 2)
-        self.assertSetEqual(to_draw, {(s.label, (s.polygon.y, s.polygon.x, s.depth)) for s in points})
+        self.assertSetEqual(to_draw, {(s.label, (s.depth, s.polygon.y, s.polygon.x)) for s in points})
 
 
 class TestCsvToPoints(TestCase):
